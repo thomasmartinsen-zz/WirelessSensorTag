@@ -7,17 +7,19 @@ namespace WirelessSensorTag.Tests
     public class ClientTest
     {
         private readonly IClient client;
+        private readonly ITestData testData;
 
         public ClientTest()
         {
             client = new Client();
+
+            testData = new TestData(); /// Instantiate new implementation of ITestData containing your data.
         }
 
         [TestMethod]
         public async Task LogShared_GetLatestTemperatureRawDataByUUIDAsync()
         {
-            var uuid =" eb3b1715-212a-4511-a68f-93c0aed3df23";
-            var result = await client.LogShared.GetLatestTemperatureRawDataByUUIDAsync(uuid);
+            var result = await client.LogShared.GetLatestTemperatureRawDataByUUIDAsync(testData.DeviceUUID);
 
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Battery > 0);

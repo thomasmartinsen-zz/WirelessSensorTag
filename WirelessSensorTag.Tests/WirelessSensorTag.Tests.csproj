@@ -56,6 +56,8 @@
   <ItemGroup>
     <Compile Include="ClientTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ITestData.cs" />
+    <Compile Include="TestData.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WirelessSensorTag\WirelessSensorTag.csproj">
