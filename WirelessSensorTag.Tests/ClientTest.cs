@@ -7,13 +7,13 @@ namespace WirelessSensorTag.Tests
     public class ClientTest
     {
         private readonly IClient client;
-        private readonly ITestData testData;
+        private readonly TestData testData;
 
         public ClientTest()
         {
             client = new Client();
 
-            testData = new TestData(); /// Instantiate new implementation of ITestData containing your data.
+            testData = TestData.LoadFromJsonFile(@"c:\temp\sampledata.json"); /// Load with url to JSON containing your data.
         }
 
         [TestMethod]
