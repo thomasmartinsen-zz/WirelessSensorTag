@@ -1,6 +1,6 @@
 # WirelessSensorTag.NET
 
-##.NET wrapper on top of official WirelessSensorTag JSON api.
+##.NET wrapper on top of WirelessSensorTag JSON api.
 
 Currently the tool only supports the following parts of the API:
 
