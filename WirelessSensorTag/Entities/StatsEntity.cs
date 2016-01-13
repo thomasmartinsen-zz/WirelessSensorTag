@@ -19,7 +19,6 @@ namespace WirelessSensorTag.Entities
 
         [JsonProperty(PropertyName = "caps")]
         public float[] Caps { get; set; }
-
     }
 }
 

@@ -25,6 +25,6 @@ namespace WirelessSensorTag.Api
 
         Task<IEnumerable<TemperatureEntity>> GetTemperatureRawDataByUUIDAsync(string uuid);
 
-        ////void GetTemperatureStatsByUUID();
+        Task<TemperatureStatsEntity> GetTemperatureStatsByUUIDAsync(string uuid);
     }
 }

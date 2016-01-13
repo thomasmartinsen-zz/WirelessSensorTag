@@ -4,6 +4,9 @@ namespace WirelessSensorTag.Api.Dto
 {
     public class GenericRequest
     {
+        [JsonProperty(PropertyName = "id")]
+        public string ID { get; set; }
+
         [JsonProperty(PropertyName = "uuid")]
         public string UUID { get; set; }
 

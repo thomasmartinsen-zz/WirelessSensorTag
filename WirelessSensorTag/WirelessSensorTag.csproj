@@ -46,6 +46,7 @@
     <Compile Include="Entities\StatsEntity.cs" />
     <Compile Include="Entities\TemperatureEntity.cs" />
     <Compile Include="Api\Dto\GenericRequest.cs" />
+    <Compile Include="Entities\TemperatureStatsEntity.cs" />
     <Compile Include="Exceptions\HttpException.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />

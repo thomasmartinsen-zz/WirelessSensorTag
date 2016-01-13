@@ -67,5 +67,20 @@ namespace WirelessSensorTag.Api
 
             return result.Data;
         }
+
+        public async Task<TemperatureStatsEntity> GetTemperatureStatsByUUIDAsync(string uuid)
+        {
+            uuid.ThrowIfParameterIsNullOrWhiteSpace(nameof(uuid));
+
+            GenericRequest content = new GenericRequest()
+            {
+                ID = uuid
+            };
+
+            string url = string.Concat(configuration.EndpointUrl.AbsoluteUri, "ethLogShared.asmx/GetTemperatureStatsByUUID");
+            var result = await http.Post<GenericRequest, GenericResponse<TemperatureStatsEntity>>(url, content);
+
+            return result.Data;
+        }
     }
 }

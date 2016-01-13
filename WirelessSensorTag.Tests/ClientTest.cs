@@ -47,5 +47,15 @@ namespace WirelessSensorTag.Tests
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Count() > 0);
         }
+
+        [TestMethod]
+        public async Task LogShared_GetTemperatureStatsByUUIDAsync()
+        {
+            var result = await client.LogShared.GetTemperatureStatsByUUIDAsync(testData.DeviceUUID);
+
+            Assert.IsNotNull(result);
+            Assert.IsNotNull(result.Temps);
+            Assert.IsTrue(result.Temps.Count() > 0);
+        }
     }
 }
