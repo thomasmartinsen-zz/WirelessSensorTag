@@ -16,6 +16,6 @@ var client = new WirelessSensorTag.Client();
 var latestTemperature = await client.LogShared.GetLatestTemperatureRawDataByUUIDAsync("0123456789");
 ```
 
-Documentation of official JSON api can be found at http://wirelesstag.net/media/mytaglist.com/apidoc.html.
+Documentation of WirelessSensorTag JSON api can be found at http://wirelesstag.net/media/mytaglist.com/apidoc.html.
 
 NuGet package available at https://www.nuget.org/packages/WirelessSensorTag.NET.
