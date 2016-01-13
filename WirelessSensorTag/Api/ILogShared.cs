@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using WirelessSensorTag.Entities;
 
 namespace WirelessSensorTag.Api
@@ -19,9 +21,9 @@ namespace WirelessSensorTag.Api
 
         ////void GetMultiTagStatsRawByUUIDs();
 
-        ////void GetStatsRawByUUID();
+        Task<IEnumerable<StatsEntity>> GetStatsRawByUUIDAsync(string uuid, DateTime fromDate, DateTime toDate);
 
-        ////void GetTemperatureRawDataByUUID();
+        Task<IEnumerable<TemperatureEntity>> GetTemperatureRawDataByUUIDAsync(string uuid);
 
         ////void GetTemperatureStatsByUUID();
     }

@@ -1,5 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 
 namespace WirelessSensorTag.Tests
 {
@@ -23,6 +25,27 @@ namespace WirelessSensorTag.Tests
 
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Battery > 0);
+        }
+
+        [TestMethod]
+        public async Task LogShared_GetStatsRawByUUIDAsync()
+        {
+            var fromDate = new DateTime(2015, 1, 1);
+            var toDate = new DateTime(2015, 1, 10);
+
+            var result = await client.LogShared.GetStatsRawByUUIDAsync(testData.DeviceUUID, fromDate, toDate);
+
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.Count() > 0);
+        }
+
+        [TestMethod]
+        public async Task LogShared_GetTemperatureRawDataByUUIDAsync()
+        {
+            var result = await client.LogShared.GetTemperatureRawDataByUUIDAsync(testData.DeviceUUID);
+
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.Count() > 0);
         }
     }
 }

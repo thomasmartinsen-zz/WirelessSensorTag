@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using WirelessSensorTag.Api.Dto;
 using WirelessSensorTag.Common;
 using WirelessSensorTag.Entities;
@@ -22,13 +25,45 @@ namespace WirelessSensorTag.Api
         {
             uuid.ThrowIfParameterIsNullOrWhiteSpace(nameof(uuid));
 
-            WirelessTagUuidRequest content = new WirelessTagUuidRequest()
+            GenericRequest content = new GenericRequest()
             {
                 UUID = uuid
             };
 
             string url = string.Concat(configuration.EndpointUrl.AbsoluteUri, "ethLogShared.asmx/GetLatestTemperatureRawDataByUUID");
-            var result = await http.Post<WirelessTagUuidRequest, GenericResponse<TemperatureEntity>>(url, content);
+            var result = await http.Post<GenericRequest, GenericResponse<TemperatureEntity>>(url, content);
+
+            return result.Data;
+        }
+
+        public async Task<IEnumerable<StatsEntity>> GetStatsRawByUUIDAsync(string uuid, DateTime fromDate, DateTime toDate)
+        {
+            uuid.ThrowIfParameterIsNullOrWhiteSpace(nameof(uuid));
+
+            GenericRequest content = new GenericRequest()
+            {
+                UUID = uuid,
+                FromDate = fromDate.ToString(),
+                ToDate = toDate.ToString(),
+            };
+
+            string url = string.Concat(configuration.EndpointUrl.AbsoluteUri, "ethLogShared.asmx/GetStatsRawByUUID");
+            var result = await http.Post<GenericRequest, GenericResponse<IEnumerable<StatsEntity>>>(url, content);
+
+            return result.Data;
+        }
+
+        public async Task<IEnumerable<TemperatureEntity>> GetTemperatureRawDataByUUIDAsync(string uuid)
+        {
+            uuid.ThrowIfParameterIsNullOrWhiteSpace(nameof(uuid));
+
+            GenericRequest content = new GenericRequest()
+            {
+                UUID = uuid
+            };
+
+            string url = string.Concat(configuration.EndpointUrl.AbsoluteUri, "ethLogShared.asmx/GetTemperatureRawDataByUUID");
+            var result = await http.Post<GenericRequest, GenericResponse<IEnumerable<TemperatureEntity>>>(url, content);
 
             return result.Data;
         }

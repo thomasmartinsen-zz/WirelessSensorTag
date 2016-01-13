@@ -43,8 +43,9 @@
     <Compile Include="Common\Configuration.cs" />
     <Compile Include="Common\IConfiguration.cs" />
     <Compile Include="Api\Dto\GenericResponse.cs" />
+    <Compile Include="Entities\StatsEntity.cs" />
     <Compile Include="Entities\TemperatureEntity.cs" />
-    <Compile Include="Api\Dto\UuidRequest.cs" />
+    <Compile Include="Api\Dto\GenericRequest.cs" />
     <Compile Include="Exceptions\HttpException.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
