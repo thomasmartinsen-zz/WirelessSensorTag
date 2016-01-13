@@ -1,8 +1,8 @@
 # WirelessSensorTag.NET
 
-##.NET wrapper on top of WirelessSensorTag JSON api.
+##.NET client on top of WirelessSensorTag JSON api.
 
-Currently the tool only supports the following parts of the API:
+Currently the client only supports the following parts of the API:
 
 * ethLogShared.asmx 
  * GetLatestTemperatureRawDataByUUID
@@ -10,7 +10,7 @@ Currently the tool only supports the following parts of the API:
  * GetTemperatureRawDataByUUID
  * GetTemperatureStatsByUUID
 
-Short example of how to use the tool:
+Short example of how to use the client:
 ```
 var client = new WirelessSensorTag.Client();
 var latestTemperature = await client.LogShared.GetLatestTemperatureRawDataByUUIDAsync("0123456789");
