@@ -18,6 +18,33 @@ namespace WirelessSensorTag.Tests
             testData = TestData.LoadFromJsonFile(@"c:\temp\sampledata.json"); /// Load with url to JSON containing your data.
         }
 
+        ////[TestMethod]
+        ////public async Task LogShared_GetDetailLogByUUIDAsync()
+        ////{
+        ////    var date = new DateTime(2015, 1, 1);
+
+        ////    var result = await client.LogShared.GetDetailLogByUUIDAsync(testData.DeviceUUID, date);
+
+        ////    Assert.IsNotNull(result);
+        ////}
+
+        [TestMethod]
+        public async Task LogShared_GetHourlyStatsByUUIDsAsync()
+        {
+            var uuids = new string[]
+            {
+                testData.DeviceUUID,
+                testData.DeviceUUID,
+                testData.DeviceUUID,
+            };
+
+            var sensorType = "temperature";
+
+            var result = await client.LogShared.GetHourlyStatsByUUIDsAsync(uuids, sensorType);
+
+            Assert.IsNotNull(result);
+        }
+
         [TestMethod]
         public async Task LogShared_GetLatestTemperatureRawDataByUUIDAsync()
         {

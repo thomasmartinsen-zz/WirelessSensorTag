@@ -1,4 +1,5 @@
 ﻿using System;
+using WirelessSensorTag.Entities;
 
 namespace WirelessSensorTag.Exceptions
 {
@@ -9,6 +10,10 @@ namespace WirelessSensorTag.Exceptions
         }
 
         public HttpException(string message) : base(message)
+        {
+        }
+
+        public HttpException(ErrorEntity error) : base(error.Message)
         {
         }
     }

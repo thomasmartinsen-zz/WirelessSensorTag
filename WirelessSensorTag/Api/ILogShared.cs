@@ -7,19 +7,11 @@ namespace WirelessSensorTag.Api
 {
     public interface ILogShared
     {
-        ////void GetDetailLogByUUID();
+        ////Task<MotionEntity> GetDetailLogByUUIDAsync(string uuid, DateTime date);
 
-        ////void GetDoorStatsByUUID();
-
-        ////void GetEventRawDataByUUID();
-
-        ////void GetHourlyStatsByUUIDs();
-
-        ////void GetLatestMultiTagStatsByUUIDs();
+        Task<StatsCollectionEntity> GetHourlyStatsByUUIDsAsync(string[] uuids, string sensorType);
 
         Task<TemperatureEntity> GetLatestTemperatureRawDataByUUIDAsync(string uuid);
-
-        ////void GetMultiTagStatsRawByUUIDs();
 
         Task<IEnumerable<StatsEntity>> GetStatsRawByUUIDAsync(string uuid, DateTime fromDate, DateTime toDate);
 

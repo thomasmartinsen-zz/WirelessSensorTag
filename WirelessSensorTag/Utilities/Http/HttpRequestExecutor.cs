@@ -6,6 +6,8 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using WirelessSensorTag.Api.Dto;
+using WirelessSensorTag.Entities;
 using WirelessSensorTag.Exceptions;
 using WirelessSensorTag.Extensions;
 
@@ -120,13 +122,10 @@ namespace WirelessSensorTag.Utilities.Http
                     throw new SecurityException();
                 }
             }
-            catch (SecurityException)
-            {
-                throw;
-            }
             catch (Exception)
             {
-                throw new HttpException(contentAsString);
+                var error = JsonConvert.DeserializeObject<ErrorEntity>(contentAsString);
+                throw new HttpException(error);
             }
 
             return null;

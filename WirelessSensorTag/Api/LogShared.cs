@@ -21,6 +21,45 @@ namespace WirelessSensorTag.Api
             this.http = http;
         }
 
+        public async Task<MotionEntity> GetDetailLogByUUIDAsync(string uuid, DateTime date)
+        {
+            uuid.ThrowIfParameterIsNullOrWhiteSpace(nameof(uuid));
+
+            GenericRequest content = new GenericRequest()
+            {
+                ID = uuid,
+                Date = date.ToString(),
+            };
+
+            string url = string.Concat(configuration.EndpointUrl.AbsoluteUri, "ethLogShared.asmx/GetDetailLogByUUID");
+            var result = await http.Post<GenericRequest, GenericResponse<MotionEntity>>(url, content);
+
+            return result.Data;
+        }
+
+        /// <summary>
+        /// For specified list of tag UUIDs, retrieves average temperature, battery voltage or humidity of each hour.
+        /// </summary>
+        /// <param name="uuids"></param>
+        /// <param name=""></param>
+        /// <returns></returns>
+        public async Task<StatsCollectionEntity> GetHourlyStatsByUUIDsAsync(string[] uuids, string sensorType)
+        {
+            uuids.ThrowIfObjectIsNull(nameof(uuids));
+            sensorType.ThrowIfParameterIsNullOrWhiteSpace(nameof(sensorType));
+
+            GenericRequest content = new GenericRequest()
+            {
+                UUIDs = uuids,
+                Type = sensorType,
+            };
+
+            string url = string.Concat(configuration.EndpointUrl.AbsoluteUri, "ethLogShared.asmx/GetHourlyStatsByUUIDs");
+            var result = await http.Post<GenericRequest, GenericResponse<StatsCollectionEntity>>(url, content);
+
+            return result.Data;
+        }
+
         public async Task<TemperatureEntity> GetLatestTemperatureRawDataByUUIDAsync(string uuid)
         {
             uuid.ThrowIfParameterIsNullOrWhiteSpace(nameof(uuid));
