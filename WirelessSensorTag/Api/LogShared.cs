@@ -37,12 +37,6 @@ namespace WirelessSensorTag.Api
             return result.Data;
         }
 
-        /// <summary>
-        /// For specified list of tag UUIDs, retrieves average temperature, battery voltage or humidity of each hour.
-        /// </summary>
-        /// <param name="uuids"></param>
-        /// <param name=""></param>
-        /// <returns></returns>
         public async Task<StatsCollectionEntity> GetHourlyStatsByUUIDsAsync(string[] uuids, string sensorType)
         {
             uuids.ThrowIfObjectIsNull(nameof(uuids));
